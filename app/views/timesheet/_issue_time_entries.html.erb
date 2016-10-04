@@ -30,7 +30,6 @@
     <td align="center">
       <%= check_box_tag 'ids[]', time_entry.id, false, { :class => 'checkbox' } %>
     </td>
-    <td align="center"></td>
     <td align="center"><%= format_date(time_entry.spent_on) %></td>
     <td align="center"><%= time_entry.user.name %></td>
     <td><%= h time_entry.comments %></td>
