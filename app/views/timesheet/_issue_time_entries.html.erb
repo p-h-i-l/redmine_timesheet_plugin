@@ -2,7 +2,7 @@
 <% time_entries = issue_time_entries[1] %>
 
 <% unless issue.nil? %>
-  <tr class="<%= cycle("odd", "even") %>">
+<!--   <tr class="<%= cycle("odd", "even") %>">
     <td align="center">
       <%= link_to image_tag('toggle_check.png'), {}, :onclick => "toggleTimeEntriesSelectionIssue('#{issue.id}'); return false;",
       :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}", :class => 'toggle-all' %>
@@ -23,7 +23,7 @@
     <td align="center"><strong><%= number_with_precision(displayed_time_entries_for_issue(time_entries), :precision => @precision) %></strong></td>
     <% Redmine::Hook.call_hook(:plugin_timesheet_views_timesheet_time_entry_sum, {:issue => issue, :time_entries => time_entries, :precision => @precision }) %>
     <td align="center"></td>
-  </tr>
+  </tr> -->
 <% time_entries.each do |time_entry| %>
   <%# TODO: Typo on hook %>
   <tr class="<%= cycle("odd", "even") %> issue-time-entry-<%= issue.id -%> hascontextmenu <%= call_hook(:plugin_timesheet_view_timesheets_time_entry_row_class, {:time_entry => time_entry }) %> <%= call_hook(:plugin_timesheet_views_timesheets_time_entry_row_class, {:time_entry => time_entry }) %>" style="display:none;">
