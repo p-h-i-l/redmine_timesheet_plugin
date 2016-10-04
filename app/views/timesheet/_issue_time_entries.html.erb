@@ -24,27 +24,44 @@
     <% Redmine::Hook.call_hook(:plugin_timesheet_views_timesheet_time_entry_sum, {:issue => issue, :time_entries => time_entries, :precision => @precision }) %>
     <td align="center"></td>
   </tr> -->
-<% time_entries.each do |time_entry| %>
-  <%# TODO: Typo on hook %>
-  <tr class="<%= cycle("odd", "even") %> issue-time-entry-<%= issue.id -%> hascontextmenu <%= call_hook(:plugin_timesheet_view_timesheets_time_entry_row_class, {:time_entry => time_entry }) %> <%= call_hook(:plugin_timesheet_views_timesheets_time_entry_row_class, {:time_entry => time_entry }) %>">
-    <td align="center">
-      <%= check_box_tag 'ids[]', time_entry.id, false, { :class => 'checkbox' } %>
-    </td>
-    <td align="center"><%= format_date(time_entry.spent_on) %></td>
-    <td align="center"><%= time_entry.user.name %></td>
-    <td><%= h time_entry.comments %></td>
-    <td align="center"><strong><%= number_with_precision(time_entry.hours, :precision => @precision) %></strong></td>
-    <% Redmine::Hook.call_hook(:plugin_timesheet_views_timesheet_time_entry, {:time_entry => time_entry, :precision => @precision }) %>
-    <td align="center">
-      <% if time_entry.editable_by?(User.current) -%>
-        <%= link_to image_tag('edit.png'), {:controller => 'timelog', :action => 'edit', :id => time_entry},
-                                         :title => l(:button_edit) %>
-        <%= link_to image_tag('delete.png'), {:controller => 'timelog', :action => 'destroy', :id => time_entry},
-                                           :confirm => l(:text_are_you_sure),
-                                           :method => :post,
-                                           :title => l(:button_delete) %>
-     <% end -%>
-    </td>
-  </tr>
-<% end %>
+<table class="list issues">
+  <thead>
+    <th width="2%">
+      <%= link_to image_tag('toggle_check.png'), "javascript:;", 
+        :onclick => 'toggleIssuesSelection(this); return false;',
+        :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}", :class => 'toggle-all' %>
+    </th>
+    <th width="8%"><%= l(:label_date) %></th>
+    <th width="10%"><%= l(:label_member) %></th>
+    <th width="45%"><%= l(:label_issue) %> / <%= l(:field_comments) %></th>
+    <th width="10%"><%= l(:field_hours) %>
+    <% Redmine::Hook.call_hook(:plugin_timesheet_views_timesheet_group_header, { }) %>
+    <th align="center"></td>
+  </thead>
+  <tbody>
+  <% time_entries.each do |time_entry| %>
+    <%# TODO: Typo on hook %>
+    <tr class="<%= cycle("odd", "even") %> issue-time-entry-<%= issue.id -%> hascontextmenu <%= call_hook(:plugin_timesheet_view_timesheets_time_entry_row_class, {:time_entry => time_entry }) %> <%= call_hook(:plugin_timesheet_views_timesheets_time_entry_row_class, {:time_entry => time_entry }) %>">
+      <td align="center">
+        <%= check_box_tag 'ids[]', time_entry.id, false, { :class => 'checkbox' } %>
+      </td>
+      <td align="center"><%= format_date(time_entry.spent_on) %></td>
+      <td align="center"><%= time_entry.user.name %></td>
+      <td><%= h time_entry.comments %></td>
+      <td align="center"><strong><%= number_with_precision(time_entry.hours, :precision => @precision) %></strong></td>
+      <% Redmine::Hook.call_hook(:plugin_timesheet_views_timesheet_time_entry, {:time_entry => time_entry, :precision => @precision }) %>
+      <td align="center">
+        <% if time_entry.editable_by?(User.current) -%>
+          <%= link_to image_tag('edit.png'), {:controller => 'timelog', :action => 'edit', :id => time_entry},
+                                           :title => l(:button_edit) %>
+          <%= link_to image_tag('delete.png'), {:controller => 'timelog', :action => 'destroy', :id => time_entry},
+                                             :confirm => l(:text_are_you_sure),
+                                             :method => :post,
+                                             :title => l(:button_delete) %>
+       <% end -%>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <% end %>
