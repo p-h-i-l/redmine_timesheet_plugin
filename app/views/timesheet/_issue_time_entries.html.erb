@@ -24,14 +24,6 @@
     <% Redmine::Hook.call_hook(:plugin_timesheet_views_timesheet_time_entry_sum, {:issue => issue, :time_entries => time_entries, :precision => @precision }) %>
     <td align="center"></td>
   </tr> -->
-  <div class="headline">
-    <div class="tooltip">
-        <h3><%= link_to_issue issue %></h3>
-      <span class="tip">
-        <%= render_issue_tooltip issue %>
-      </span>
-    </div>
-  </div>
   <table class="list issues">
     <thead>
       <th width="2%">
