@@ -44,9 +44,12 @@ h3 {
  color: #006a89;
 }
 
-h3:first-of-type {
- display: none;
+h2 {
+ margin-top: 1.5em;
+ margin-bottom 0.5em;  
 }
+
+
 
 * {
  border: 0 !important;
