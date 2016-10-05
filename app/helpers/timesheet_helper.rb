@@ -6,6 +6,14 @@ module TimesheetHelper
       (time_entries[time_entry_counter + 1].spent_on != time_entries[time_entry_counter].spent_on)
   end
 
+  def calculate_issue_total time_entries
+    hours_sum = 0
+    time_entries.each do |entry|
+      hours_sum += entry.hours
+    end
+    number_with_precision(hours_sum, :precision => @precision)
+  end 
+ 
   def calculate_day_total time_entries, time_entry_counter
     date = time_entries[time_entry_counter].spent_on
     hours_sum = 0

@@ -12,11 +12,13 @@ h2,
 #time_entries table td:first-child,
 #time_entries table th:first-child,
 /* hide user column */
-#time_entries table td:nth-child(3),
-#time_entries table th:nth-child(3),
+/*
+ * #time_entries table td:nth-child(3),
+ * #time_entries table th:nth-child(3), 
+ */
 /* hide version column */
-#time_entries table td:nth-child(6),
-#time_entries table th:nth-child(6) {
+#time_entries table td:nth-child(7),
+#time_entries table th:nth-child(7) {
 	display: none;
 }
 
@@ -34,24 +36,38 @@ tr.total td {
 }
 
 table td *, table th {
-	font-weight: normal;
+ //	font-weight: normal;
 }
 
 h3 {
-	page-break-before: always;
+ font-size: 18px;
+ color: #006a89;
 }
 
 h3:first-of-type {
-	page-break-before: auto;
+ display: none;
 }
 
 * {
-	border: 0 !important;
-	background-color: #fff !important;
+ border: 0 !important;
+ background-color: #fff !important;
 }
 
 table * {
 	text-align: left;
+}
+
+table {
+ page-break-after: always
+}
+
+.spacer_row {
+ height: 5px;
+ background-color: #006a89;
+}
+
+.sum {
+ font-weight: bold;
 }
 
 /* right align hours column */

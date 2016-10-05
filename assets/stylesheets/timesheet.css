@@ -1,3 +1,12 @@
+h3 {
+ margin-top: 1.5em;
+ margin-bottom: 0.5em;
+}
+
+.spacer_row {
+  height: 10px;
+}
+
 div#timesheet-form p { padding:0px 10px; float:left; clear:none;}
 .icon-timesheet { background-image: url(../images/csv.png); }
 
@@ -65,4 +74,8 @@ tr.total {
 
 tr.total {
 	display: none;
+}
+
+table.list td{
+  text-align: left;
 }

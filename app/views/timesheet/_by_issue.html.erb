@@ -22,6 +22,16 @@
     </thead>
     <tbody>
      <%= render :partial => "issue_time_entries", :collection => time_entries, :as => :time_entry, :locals => {:issue => issue } %>
+      <tr class="spacer_row">
+        <td colspan="7"></td>
+      </tr>      
+      <tr class="sum">
+        <td></td>
+        <td><strong>Total<strong></td>
+        <%= ("<td></td>" * 3).html_safe %>
+        <td><strong><%= calculate_issue_total time_entries %></strong></td>
+        <td> </td>
+      </tr>
    </tbody>
   </table>
   <% end %> 
