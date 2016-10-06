@@ -6,8 +6,10 @@ This is a Redmine 2+ compatible version of {plugin}[https://github.com/edavis10/
 
 Further modifications are:
 * The addition of a version field in the report table
-* Print style
+* Print style, with better defaults
 * Day total hour summaries for the print style
+* Issue grouping shows each Ticket with its activities
+* Total time per Ticket below each tickets activities
 * Cleaned up form layout
 * Headers of multiselects select all elements. They also deselect all elements if all elements are selected
 
