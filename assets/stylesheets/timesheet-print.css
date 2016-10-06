@@ -3,7 +3,6 @@
 #header,
 #sidebar,
 .contextual,
-h2,
 #timesheet-form,
 /* hide edit\delete buttons */
 #time_entries table td:nth-child(10),
@@ -19,11 +18,11 @@ h2,
 /* hide version column */
 #time_entries table td:nth-child(7),
 #time_entries table th:nth-child(7) {
-	display: none;
+  display: none;
 }
 
 tr.total {
-	display: table-row;
+  display: table-row;
 }
 
 tr.total td {
@@ -40,11 +39,20 @@ table td *, table th {
 }
 
 h3 {
- font-size: 18px;
+ font-size: 14px;
  color: #006a89;
 }
 
+.timesheet-title{
+  display: none; 
+}
+
+.time-title{
+  display: none;
+}
+
 h2 {
+ font-size: 18px;
  margin-top: 1.5em;
  margin-bottom 0.5em;  
 }
@@ -57,7 +65,8 @@ h2 {
 }
 
 table * {
-	text-align: left;
+  text-align: left;
+  font-size: 10px;
 }
 
 table {
